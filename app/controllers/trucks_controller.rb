@@ -5,11 +5,13 @@ class TrucksController < ApplicationController
   # GET /trucks.json
   def index
     @trucks = Truck.all
+    @trips = Trip.all
   end
 
   # GET /trucks/1
   # GET /trucks/1.json
   def show
+    @trips = Trip.where(truck_id: @truck.id)
   end
 
   # GET /trucks/new

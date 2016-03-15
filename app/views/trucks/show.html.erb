@@ -1,14 +1,181 @@
-<p id="notice"><%= notice %></p>
+<h3>
+  <center>ทะเบียนรถ: <%= @truck.plate %></center>
+</h3>
 
-<p>
-  <strong>Plate:</strong>
-  <%= @truck.plate %>
-</p>
 
-<p>
-  <strong>Bulker:</strong>
-  <%= @truck.bulker %>
-</p>
 
+
+<button style="position:relative;left:1025px;top:90px;" class="button" data-toggle="modal" data-target=".bs-example-modal-sm">รีเซ็ต</button>
+
+
+
+<!-- Small modal -->
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 id="text-center">รีเซ็ตระยะทาง<h4>
+      </div>
+        <table id="text-center" class="table table-bordered">
+          <tr>
+            <td>น้ำมันเครื่อง</td>
+            <td>
+              <script type="text/javascript">
+              function AlertIt() {
+              var answer = confirm ("Please click on OK to continue.")
+              if (answer)
+              window.location="http://www.continue.com";
+              }
+              </script>
+
+              <a href="javascript:AlertIt();">click me</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>น้ำมันเกียร์</td>
+            <td>2</td>
+          </tr>
+
+          <tr>
+            <td>เฟืองท้าย</td>
+            <td>2</td>
+          </tr>
+
+          <tr>
+            <td>กรองอากาศ</td>
+            <td>2</td>
+          </tr>
+
+        </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--
+<div class="btn-group">
+  <button style="position:relative;left:1010px;top:20.4px;"  class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    &nbsp&nbsp&nbsp&nbsp น้ำมันเครื่อง &nbsp&nbsp&nbsp&nbsp <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div> -->
+
+<div class="progress">
+  <div id="engine-oil" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="100" aria-valuemax="90" style="50%">
+
+    <!-- <script>
+      document.write("น้ำมันเครื่อง " + result + "%");
+    </script> -->
+  </div>
+
+</div>
+
+
+<div class="progress">
+  <div id="transmission-oil" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="90" style="">
+    <!-- <script>
+      document.write("น้ำมันเกียร์ " + result + "%");
+    </script> -->
+  </div>
+</div>
+
+<div class="progress">
+  <div id="gear-oil" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="90" style="">
+    <!-- <script>
+      document.write("เฟืองท้าย " + result + "%");
+    </script> -->
+  </div>
+</div>
+<div class="progress">
+  <div id="air-filter" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="90" style="">
+    <!-- <script>
+      document.write("กรองอากาศ " + result + "%");
+    </script> -->
+  </div>
+</div>
+
+
+<br>
+<table id="text-center" class="striped">
+  <thead>
+    <tr id="bold">
+      <td>วันที่ ป/ด/ว</td>
+      <td>พนักงานขับรถ</td>
+      <td>จำนวนตัน</td>
+      <td>น้ำมัน(ลิตร)</td>
+      <td>ระยะทาง</td>
+      <td>เรทน้ำมัน</td>
+      <td>ชนิดปูน</td>
+      <td>สถานที่ส่งของ</td>
+    </tr>
+  </thead>
+
+<% @trips.each do |trip| %>
+  <tr>
+    <td><%= trip.trip_date %></td>
+    <td><%= trip.driver %></td>
+    <td><%= trip.weight %></td>
+    <td><%= trip.liter %></td>
+    <td><%= trip.distance %></td>
+    <td><%= trip.average %></td>
+    <td><%= trip.cement %></td>
+    <td><%= trip.destination %></td>
+
+    <script>
+    if (<%= trip.id %> > 4) {
+      a = +a + +'<%= trip.distance %>'
+    }
+      console.log("truck_id:", '<%= trip.truck_id %>', ", trip_id:", '<%= trip.id %>', ", distance:", '<%= trip.distance %>')
+
+    </script>
+
+    <script>
+      engine_oil = ((a/20000)*100).toFixed(1)
+
+    </script>
+
+    <td><%= link_to 'แก้ไข', edit_truck_trip_path(@truck, trip) %> </td>
+
+
+  </tr>
+<% end %>
+</table>
+
+<script>
+  console.log(a)
+</script>
+
+<br>
+
+
+<!-- <script>
+  document.getElementById("engine-oil").style.width = engine_oil + "%";
+  document.getElementById("engine-oil").innerHTML = "น้ำมันเครื่อง " + engine_oil + "%";
+</script> -->
+
+<script>
+  document.getElementById("transmission-oil").style.width = transmission_oil + "%";
+  document.getElementById("transmission-oil").innerHTML = "น้ำมันเกียร์ " + transmission_oil + "%";
+</script>
+
+<script>
+  document.getElementById("gear-oil").style.width = gear_oil + "%";
+  document.getElementById("gear-oil").innerHTML = "เฟืองท้าย " + gear_oil + "%";
+</script>
+
+<script>
+  document.getElementById("air-filter").style.width = air_filter+ "%";
+  document.getElementById("air-filter").innerHTML = "กรองอากาศ " + air_filter + "%";
+</script>
+
+
+<%= link_to 'create', new_truck_trip_path(@truck) %> |
 <%= link_to 'Edit', edit_truck_path(@truck) %> |
 <%= link_to 'Back', trucks_path %>

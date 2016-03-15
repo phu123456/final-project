@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_truck
   # GET /trips
   # GET /trips.json
   def index
@@ -25,15 +25,12 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
     @trip = Trip.new(trip_params)
+    @trip.truck_id = @truck.id
 
-    respond_to do |format|
-      if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
-        format.json { render :show, status: :created, location: @trip }
-      else
-        format.html { render :new }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+    if @trip.save
+      redirect_to @truck
+    else
+      render 'new'
     end
   end
 
@@ -42,7 +39,7 @@ class TripsController < ApplicationController
   def update
     respond_to do |format|
       if @trip.update(trip_params)
-        format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
+        format.html { redirect_to @truck, notice: 'Trip was successfully updated.' }
         format.json { render :show, status: :ok, location: @trip }
       else
         format.html { render :edit }
@@ -65,6 +62,10 @@ class TripsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
       @trip = Trip.find(params[:id])
+    end
+
+    def set_truck
+      @truck = Truck.find(params[:truck_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
