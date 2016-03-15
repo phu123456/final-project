@@ -1,0 +1,33 @@
+<%= form_for(@maintenance) do |f| %>
+  <% if @maintenance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@maintenance.errors.count, "error") %> prohibited this maintenance from being saved:</h2>
+
+      <ul>
+      <% @maintenance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :engine_oil %><br>
+    <%= f.text_field :engine_oil %>
+  </div>
+  <div class="field">
+    <%= f.label :transmission_oil %><br>
+    <%= f.text_field :transmission_oil %>
+  </div>
+  <div class="field">
+    <%= f.label :gear_oil %><br>
+    <%= f.text_field :gear_oil %>
+  </div>
+  <div class="field">
+    <%= f.label :air_filter %><br>
+    <%= f.text_field :air_filter %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
