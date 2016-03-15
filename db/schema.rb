@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315193906) do
+ActiveRecord::Schema.define(version: 20160315215753) do
 
   create_table "airs", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 20160315193906) do
   create_table "blowers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "truck_id"
   end
 
   create_table "coolants", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "truck_id"
   end
 
   create_table "engines", force: :cascade do |t|
@@ -46,6 +48,8 @@ ActiveRecord::Schema.define(version: 20160315193906) do
     t.decimal  "transmission_oil"
     t.decimal  "gear_oil"
     t.decimal  "air_filter"
+    t.decimal  "water_coolant"
+    t.decimal  "cement_blower"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -73,6 +77,8 @@ ActiveRecord::Schema.define(version: 20160315193906) do
     t.integer  "gear_id"
     t.integer  "air_id"
     t.integer  "truck_id"
+    t.integer  "coolant_id"
+    t.integer  "blower_id"
   end
 
   create_table "trucks", force: :cascade do |t|

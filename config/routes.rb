@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  post 'trucks/:id/reEngine', to: 'trucks#reEngine', as: 'truck_reEngine'
+  post 'trucks/:id/reTransmission', to: 'trucks#reTransmission', as: 'truck_reTransmission'
+  post 'trucks/:id/reGear', to: 'trucks#reGear', as: 'truck_reGear'
+  post 'trucks/:id/reAir', to: 'trucks#reAir', as: 'truck_reAir'
+  post 'trucks/:id/reCoolant', to: 'trucks#reCoolant', as: 'truck_reCoolant'
+  post 'trucks/:id/reBlower', to: 'trucks#reBlower', as: 'truck_reBlower'
+
+  resources :maintenances
   devise_for :users
   resources :blowers
   resources :coolants
@@ -6,7 +15,6 @@ Rails.application.routes.draw do
   resources :gears
   resources :transmissions
   resources :engines
-  resources :maintenances
   resources :trips
 
   resources :trucks do

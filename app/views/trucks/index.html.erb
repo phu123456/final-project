@@ -1,29 +1,148 @@
-<p id="notice"><%= notice %></p>
+<!-- <%= @maintenance_red.engine_alert%>
+<%= @maintenance_orange.engine_alert.to_i %>
+<%= @maintenance_red.transmission_alert.to_i %>
+<%= @maintenance_orange.transmission_alert.to_i %>
+<%= @maintenance_red.gear_alert.to_i %>
+<%= @maintenance_orange.gear_alert.to_i %>
+<%= @maintenance_red.air_alert.to_i %>
+<%= @maintenance_orange.air_alert.to_i %>
+<%= @maintenance_red.coolant_alert.to_i %>
+<%= @maintenance_orange.coolant_alert.to_i %>
+<%= @maintenance_red.blower_alert.to_i %>
+<%= @maintenance_orange.blower_alert.to_i %> -->
 
-<h1>Listing Trucks</h1>
-
+<h2 align="center">สถานะซ่อมบำรุง</h2>
+<br><br>
 <table class="table table-striped">
   <thead>
     <tr>
-      <!-- <th>Bulker</th> -->
-      <th>ทะเบียนรถ</th>
-      <th colspan="3"></th>
+      <td align="center"></td>
+      <td align="center">น้ำมันเครื่อง</td>
+      <td align="center">น้ำมันเกียร์</td>
+      <td align="center">เฟืองท้าย</td>
+      <td align="center">กรองอากาศ</td>
+      <td align="center">น้ำยาหม้อน้ำ</td>
+      <td align="center">น้ำยาปั้มลม</td>
+      <td colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @trucks.each do |truck| %>
       <tr>
-        <!-- <td><%= truck.bulker %></td> -->
-        <td><%= truck.plate %></td>
-        <td class="table-bordered"><%= link_to 'ดูข้อมูล', truck %></td>
-        <td class="table-bordered"><%= link_to 'เพิ่มเที่ยว', edit_truck_path(truck) %></td>
-        <td class="table-bordered"><%= link_to 'ลบ', truck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="table-bordered" align="center"><%= truck.plate %></td>
+        <!-- engine-oil -->
+        <td align="center"><svg height="23" width="23">
+              <circle id="'<%= truck.plate %>'engine" cx="11.5" cy="11.5" r="11.5" fill="" />
+            </svg>
+        </td>
+
+        <!-- transmission-oil -->
+        <td align="center"><svg height="23" width="23">
+              <circle id="'<%= truck.plate %>'transmission" cx="11.5" cy="11.5" r="11.5" fill="" />
+            </svg>
+        </td align="center">
+
+        <!-- gear-oil -->
+        <td align="center"><svg height="23" width="23">
+              <circle id="'<%= truck.plate %>'gear" cx="11.5" cy="11.5" r="11.5" fill="" />
+            </svg>
+        </td>
+
+        <!-- air-filter -->
+        <td align="center"><svg height="23" width="23">
+              <circle id="'<%= truck.plate %>'air" cx="11.5" cy="11.5" r="11.5" fill="" />
+            </svg>
+        </td>
+
+        <!-- air-filter -->
+        <td align="center"><svg height="23" width="23">
+              <circle id="'<%= truck.plate %>'coolant" cx="11.5" cy="11.5" r="11.5" fill="" />
+            </svg>
+        </td>
+
+        <!-- air-filter -->
+        <td align="center"><svg height="23" width="23">
+              <circle id="'<%= truck.plate %>'blower" cx="11.5" cy="11.5" r="11.5" fill="" />
+            </svg>
+        </td>
+
+        <td class="table-bordered center-text"><%= link_to 'ดูข้อมูล', truck %></td>
+        <td class="table-bordered center-text"><%= link_to 'เพิ่มเที่ยว', new_truck_trip_path(truck) %></td>
+        <td class="table-bordered center-text"><%= link_to 'ลบ', truck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <script>
+            //this is for engine oil
+              if (<%= truck.total_engine_distance%> > <%= @maintenance_red.engine_alert.to_i %>) {
+
+                document.getElementById("'<%= truck.plate %>'engine").style.fill = "red";
+              }
+              else if (<%= truck.total_engine_distance%> > <%= @maintenance_orange.engine_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'engine").style.fill = "orange";
+              }
+              else {
+                document.getElementById("'<%= truck.plate %>'engine").style.fill = "lightgreen";
+              }
+
+            //this is for transmission oil
+              if (<%= truck.total_transmission_distance%> > <%= @maintenance_red.transmission_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'transmission").style.fill = "red";
+              }
+              else if (<%= truck.total_transmission_distance%> > <%= @maintenance_orange.transmission_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'transmission").style.fill = "orange";
+              }
+              else {
+                document.getElementById("'<%= truck.plate %>'transmission").style.fill = "lightgreen";
+              }
+            //this is for gear oil
+              if (<%= truck.total_gear_distance%> > <%= @maintenance_red.gear_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'gear").style.fill = "red";
+              }
+              else if (<%= truck.total_gear_distance%> > <%= @maintenance_orange.gear_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'gear").style.fill = "orange";
+              }
+              else {
+                document.getElementById("'<%= truck.plate %>'gear").style.fill = "lightgreen";
+              }
+
+            //this is for air filter
+              if (<%= truck.total_air_distance%> > <%= @maintenance_red.air_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'air").style.fill = "red";
+              }
+              else if (<%= truck.total_air_distance%> > <%= @maintenance_orange.air_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'air").style.fill = "orange";
+              }
+              else {
+                document.getElementById("'<%= truck.plate %>'air").style.fill = "lightgreen";
+              }
+
+            //this is for coolant
+              if (<%= truck.total_coolant_distance%> > <%= @maintenance_red.coolant_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'coolant").style.fill = "red";
+              }
+              else if (<%= truck.total_coolant_distance%> > <%= @maintenance_orange.coolant_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'coolant").style.fill = "orange";
+              }
+              else {
+                document.getElementById("'<%= truck.plate %>'coolant").style.fill = "lightgreen";
+              }
+
+            //this is for blower
+              if (<%= truck.total_blower_distance%> > <%= @maintenance_red.blower_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'blower").style.fill = "red";
+              }
+              else if (<%= truck.total_blower_distance%> > <%= @maintenance_orange.blower_alert.to_i %>) {
+                document.getElementById("'<%= truck.plate %>'blower").style.fill = "orange";
+              }
+              else {
+                document.getElementById("'<%= truck.plate %>'blower").style.fill = "lightgreen";
+              }
+
+        </script>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Truck', new_truck_path %>
+<a class="waves-effect waves-light btn" href="/trucks/new">เพิ่มรถ</a>

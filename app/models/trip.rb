@@ -22,5 +22,4 @@
 
 class Trip < ActiveRecord::Base
   belongs_to :truck
-  has_many :maintenances
 end

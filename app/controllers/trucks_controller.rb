@@ -1,11 +1,55 @@
 class TrucksController < ApplicationController
-  before_action :set_truck, only: [:show, :edit, :update, :destroy]
+  before_action :set_truck, only: [:show, :edit, :update, :destroy, :reEngine, :reTransmission, :reGear, :reAir, :reCoolant, :reBlower]
+  def reEngine
+    @un_reset_engine_oil_trips = @truck.trips.where(engine_id: nil)
+    @engine = Engine.create!()
+    @un_reset_engine_oil_trips.update_all(engine_id: @engine.id)
+    redirect_to @truck
+  end
 
+  def reTransmission
+    @un_reset_transmission_oil_trips = @truck.trips.where(transmission_id: nil)
+    @transmission = Transmission.create!()
+    @un_reset_transmission_oil_trips.update_all(transmission_id: @transmission.id)
+    redirect_to @truck
+  end
+
+  def reGear
+    @un_reset_gear_oil_trips = @truck.trips.where(gear_id: nil)
+    @gear = Gear.create!()
+    @un_reset_gear_oil_trips.update_all(gear_id: @gear.id)
+    redirect_to @truck
+  end
+
+  def reAir
+    @un_reset_air_filter_trips = @truck.trips.where(air_id: nil)
+    @air = Air.create!()
+    @un_reset_air_filter_trips.update_all(air_id: @air.id)
+    redirect_to @truck
+  end
+
+  def reCoolant
+    @un_reset_coolant_trips = @truck.trips.where(coolant_id: nil)
+    @coolant = Coolant.create!()
+    @un_reset_coolant_trips.update_all(coolant_id: @coolant.id)
+    redirect_to @truck
+  end
+
+  def reBlower
+    @un_reset_blower_trips = @truck.trips.where(blower_id: nil)
+    @blower = Blower.create!()
+    @un_reset_blower_trips.update_all(blower_id: @blower.id)
+    redirect_to @truck
+  end
   # GET /trucks
   # GET /trucks.json
   def index
+    @truck = Truck.first
+    @maintenance_red = Maintenance.first
+    @maintenance_orange = Maintenance.second
     @trucks = Truck.all
     @trips = Trip.all
+
   end
 
   # GET /trucks/1
@@ -73,4 +117,5 @@ class TrucksController < ApplicationController
     def truck_params
       params.require(:truck).permit(:plate, :bulker)
     end
+
 end

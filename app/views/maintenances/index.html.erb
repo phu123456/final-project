@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Maintenances</h1>
 
 <table>
@@ -9,6 +7,8 @@
       <th>Transmission oil</th>
       <th>Gear oil</th>
       <th>Air filter</th>
+      <th>Water coolant</th>
+      <th>Cement blower</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +16,12 @@
   <tbody>
     <% @maintenances.each do |maintenance| %>
       <tr>
-        <td><%= maintenance.engine_oil %></td>
-        <td><%= maintenance.transmission_oil %></td>
-        <td><%= maintenance.gear_oil %></td>
-        <td><%= maintenance.air_filter %></td>
+        <td><%= maintenance.engine_oil.to_i %></td>
+        <td><%= maintenance.transmission_oil.to_i %></td>
+        <td><%= maintenance.gear_oil.to_i %></td>
+        <td><%= maintenance.air_filter.to_i %></td>
+        <td><%= maintenance.water_coolant.to_i %></td>
+        <td><%= maintenance.cement_blower.to_i %></td>
         <td><%= link_to 'Show', maintenance %></td>
         <td><%= link_to 'Edit', edit_maintenance_path(maintenance) %></td>
         <td><%= link_to 'Destroy', maintenance, method: :delete, data: { confirm: 'Are you sure?' } %></td>

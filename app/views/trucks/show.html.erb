@@ -1,13 +1,24 @@
+
 <h3>
   <center>ทะเบียนรถ: <%= @truck.plate %></center>
 </h3>
 
 
 
+<%= @truck.total_engine_distance %>
+<%= link_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
+<%= @truck.total_transmission_distance %>
+<%= link_to 'น้ำมันเกียร์', truck_reTransmission_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
+<%= @truck.total_gear_distance %>
+<%= link_to 'น้ำมันแฟืองท้าย', truck_reGear_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
+<%= @truck.total_air_distance %>
+<%= link_to 'กรองอากาศ', truck_reAir_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
+<%= @truck.total_coolant_distance %>
+<%= link_to 'น้ำยาหม้อน้ำ', truck_reCoolant_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
+<%= @truck.total_blower_distance %>
+<%= link_to 'น้ำยาปั้มลม', truck_reBlower_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
 
 <button style="position:relative;left:1025px;top:90px;" class="button" data-toggle="modal" data-target=".bs-example-modal-sm">รีเซ็ต</button>
-
-
 
 <!-- Small modal -->
 

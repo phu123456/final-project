@@ -69,6 +69,6 @@ class MaintenancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def maintenance_params
-      params.require(:maintenance).permit(:engine_oil, :transmission_oil, :gear_oil, :air_filter)
+      params.require(:maintenance).permit(:engine_oil, :transmission_oil, :gear_oil, :air_filter, :water_coolant, :cement_blower)
     end
 end

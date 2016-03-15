@@ -18,7 +18,7 @@ class MaintenancesControllerTest < ActionController::TestCase
 
   test "should create maintenance" do
     assert_difference('Maintenance.count') do
-      post :create, maintenance: { air_filter: @maintenance.air_filter, engine_oil: @maintenance.engine_oil, gear_oil: @maintenance.gear_oil, transmission_oil: @maintenance.transmission_oil }
+      post :create, maintenance: { air_filter: @maintenance.air_filter, cement_blower: @maintenance.cement_blower, engine_oil: @maintenance.engine_oil, gear_oil: @maintenance.gear_oil, transmission_oil: @maintenance.transmission_oil, water_coolant: @maintenance.water_coolant }
     end
 
     assert_redirected_to maintenance_path(assigns(:maintenance))
@@ -35,7 +35,7 @@ class MaintenancesControllerTest < ActionController::TestCase
   end
 
   test "should update maintenance" do
-    patch :update, id: @maintenance, maintenance: { air_filter: @maintenance.air_filter, engine_oil: @maintenance.engine_oil, gear_oil: @maintenance.gear_oil, transmission_oil: @maintenance.transmission_oil }
+    patch :update, id: @maintenance, maintenance: { air_filter: @maintenance.air_filter, cement_blower: @maintenance.cement_blower, engine_oil: @maintenance.engine_oil, gear_oil: @maintenance.gear_oil, transmission_oil: @maintenance.transmission_oil, water_coolant: @maintenance.water_coolant }
     assert_redirected_to maintenance_path(assigns(:maintenance))
   end
 
