@@ -11,43 +11,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :trip_date %><br>
-    <%= f.date_select :trip_date , {:use_month_names => ['มกราคา', 'กุมพาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน','ธันวาคม']} %>
+<br>
+<div class="panel panel-default test" style="width: 60%;">
+  <div align="center" class="panel-heading"> ทะเบียน: <%=@truck.plate %></div>
+  <div class="jumbotron">
+    <div class="panel-body">
+      <div align="center">
+        <%= f.date_select :trip_date , {:use_month_names => ['มกราคา', 'กุมพาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน','ธันวาคม']} %>
+      </div>
+      <br>
+      <br>
+
+      <!-- <div class="col-xs-2">
+          <label>สองขา</label>
+          <input type="checkbox" value="1" name="trip[trip_type]" id="trip_trip_type">
+      </div> -->
+
+      <div class="col-xs-5">
+          <label>&nbspพนักงานขับรถ</label>
+          <input type="text" name="trip[driver]" class="form-control" id="trip_driver" >
+          <br>
+          <label>&nbspน้ำมัน(ลิตร)</label>
+          <input type="text" name="trip[liter]" class="form-control" id="trip_liter" >
+          <br>
+          <label>&nbspน้ำหนัก(ตัน)</label>
+          <input type="text" name="trip[weight]" class="form-control" id="trip_weight" >
+          <br>
+          <label>&nbspชนิดปูน</label>
+          <input type="text" name="trip[cement]" class="form-control" id="trip_cement">
+      </div>
+
+
+
+        <%= f.text_field :distance %>
+
+        <%= f.text_field :average %>
+
+        <%= f.text_field :destination %>
+      </div>
+        <br>
+        <div class= "actions" align="center">
+          <button type="submit" name="commit" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbspเพิ่มเที่ยว
+          </button>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :driver %><br>
-    <%= f.text_area :driver %>
-  </div>
-  <div class="field">
-    <%= f.label :weight %><br>
-    <%= f.text_field :weight %>
-  </div>
-  <div class="field">
-    <%= f.label :trip_type %><br>
-    <%= f.check_box :trip_type %>
-  </div>
-  <div class="field">
-    <%= f.label :liter %><br>
-    <%= f.text_field :liter %>
-  </div>
-  <div class="field">
-    <%= f.label :distance %><br>
-    <%= f.text_field :distance %>
-  </div>
-  <div class="field">
-    <%= f.label :average %><br>
-    <%= f.text_field :average %>
-  </div>
-  <div class="field">
-    <%= f.label :cement %><br>
-    <%= f.text_area :cement %>
-  </div>
-  <div class="field">
-    <%= f.label :destination %><br>
-    <%= f.text_area :destination %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

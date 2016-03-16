@@ -34,6 +34,18 @@
   /*add any other properties you want to style*/
 }
 
-.jumbotron {
-    background-color:transparent !important;
+#delete-button{
+  color: white;
+  background-color: red;
+  width: 60px;
+  height: 28px;
+  /*add any other properties you want to style*/
+}
+
+#bootstrap-overrides { /* 100+1=101 priority score, yay! */
+  line-height: 1;
+}
+
+.test {
+  margin: auto;
 }

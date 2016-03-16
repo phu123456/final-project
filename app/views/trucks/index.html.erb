@@ -68,7 +68,7 @@
         </td>
 
         <td class="table-bordered center-text"><%= link_to 'ดูข้อมูล', truck %></td>
-        <td class="table-bordered center-text"><%= link_to 'ลบ', truck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="table-bordered center-text"><%= button_to 'ลบ', truck, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-button" %></td>
 
         <script>
             //this is for engine oil
