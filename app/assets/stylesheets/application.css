@@ -27,6 +27,13 @@
     text-align: center;
 }
 
+#reset-button{
+  background-color: lightgreen;
+  width: 110px;
+  height: 25px;
+  /*add any other properties you want to style*/
+}
+
 .jumbotron {
     background-color:transparent !important;
 }
