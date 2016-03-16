@@ -55,6 +55,8 @@ class TrucksController < ApplicationController
   # GET /trucks/1
   # GET /trucks/1.json
   def show
+    @maintenance_red = Maintenance.first
+    @maintenance_orange = Maintenance.second
     @trips = Trip.where(truck_id: @truck.id)
   end
 

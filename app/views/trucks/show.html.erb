@@ -1,9 +1,8 @@
-
 <h3>
   <center>ทะเบียนรถ: <%= @truck.plate %></center>
 </h3>
-
-
+<br>
+<!--
 
 <%= @truck.total_engine_distance %>
 <%= link_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
@@ -18,7 +17,7 @@
 <%= @truck.total_blower_distance %>
 <%= link_to 'น้ำยาปั้มลม', truck_reBlower_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
 
-<button style="position:relative;left:1025px;top:90px;" class="button" data-toggle="modal" data-target=".bs-example-modal-sm">รีเซ็ต</button>
+<button style="position:relative;left:1025px;top:90px;" class="button" data-toggle="modal" data-target=".bs-example-modal-sm">รีเซ็ต</button> -->
 
 <!-- Small modal -->
 
@@ -79,42 +78,39 @@
 </div> -->
 
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="100" aria-valuemax="90" style="width: 50%;">
-
-    <!-- <script>
-      document.write("น้ำมันเครื่อง " + result + "%");
-    </script> -->
+  <div id ="engine-oil" class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="100" aria-valuemax="90" style="">
   </div>
-
 </div>
 
 
 <div class="progress">
-  <div id="transmission-oil" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="90" style="">
-    <!-- <script>
-      document.write("น้ำมันเกียร์ " + result + "%");
-    </script> -->
+  <div id="transmission-oil" class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="100" aria-valuemax="90" style="">
   </div>
 </div>
 
 <div class="progress">
-  <div id="gear-oil" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="90" style="">
-    <!-- <script>
-      document.write("เฟืองท้าย " + result + "%");
-    </script> -->
+  <div id="gear-oil" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="100" aria-valuemax="90" style="">
   </div>
 </div>
+
 <div class="progress">
-  <div id="air-filter" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="90" style="">
-    <!-- <script>
-      document.write("กรองอากาศ " + result + "%");
-    </script> -->
+  <div id="air-filter" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10จ" aria-valuemin="0" aria-valuemax="90" style="">
+  </div>
+</div>
+
+<div class="progress">
+  <div id="water-coolant" class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="100" aria-valuemax="90" style="">
+  </div>
+</div>
+
+<div class="progress">
+  <div id="cement-blower" class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="100" aria-valuemax="90" style="">
   </div>
 </div>
 
 
 <br>
-<table id="text-center" class="striped">
+<table id="text-center" class= "table table-striped">
   <thead>
     <tr id="bold">
       <td>วันที่ ป/ด/ว</td>
@@ -138,52 +134,153 @@
     <td><%= trip.average %></td>
     <td><%= trip.cement %></td>
     <td><%= trip.destination %></td>
-
-    <script>
-    if (<%= trip.id %> > 4) {
-      a = +a + +'<%= trip.distance %>'
-    }
-      console.log("truck_id:", '<%= trip.truck_id %>', ", trip_id:", '<%= trip.id %>', ", distance:", '<%= trip.distance %>')
-
-    </script>
-
-    <script>
-      engine_oil = ((a/20000)*100).toFixed(1)
-
-    </script>
-
-    <td><%= link_to 'แก้ไข', edit_truck_trip_path(@truck, trip) %> </td>
-
-
+    <td class="table-bordered" align="center"><%= link_to 'แก้ไข', edit_truck_trip_path(@truck, trip) %> </td>
   </tr>
 <% end %>
 </table>
 
-<script>
-  console.log(a)
-</script>
-
 <br>
 
 
-<!-- <script>
-  document.getElementById("engine-oil").style.width = engine_oil + "%";
-  document.getElementById("engine-oil").innerHTML = "น้ำมันเครื่อง " + engine_oil + "%";
-</script> -->
-
 <script>
-  document.getElementById("transmission-oil").style.width = transmission_oil + "%";
-  document.getElementById("transmission-oil").innerHTML = "น้ำมันเกียร์ " + transmission_oil + "%";
-</script>
+  // -----------engine oil bar------------
+  var engine_oil_bar = ( <%= @truck.total_engine_distance %>/<%= @maintenance_red.engine_alert.to_i %> ) * 100
 
-<script>
-  document.getElementById("gear-oil").style.width = gear_oil + "%";
-  document.getElementById("gear-oil").innerHTML = "เฟืองท้าย " + gear_oil + "%";
-</script>
+  document.getElementById("engine-oil").innerHTML = "น้ำมันเครื่อง " + engine_oil_bar.toFixed(1) + "%" + "  (" + (<%= @truck.total_engine_distance %>).toLocaleString() + "/" + (<%= @maintenance_red.engine_alert.to_i %>).toLocaleString() + ")";
 
-<script>
-  document.getElementById("air-filter").style.width = air_filter+ "%";
-  document.getElementById("air-filter").innerHTML = "กรองอากาศ " + air_filter + "%";
+  if ( <%= @truck.total_engine_distance %> < <%= @maintenance_orange.engine_alert.to_i %> ){
+    document.getElementById("engine-oil").className = "progress-bar progress-bar-success";
+  }
+  else if (( <%= @truck.total_engine_distance %> < <%= @maintenance_red.engine_alert.to_i %> )) {
+    document.getElementById("engine-oil").className = "progress-bar progress-bar-warning";
+  }
+  else {
+    document.getElementById("engine-oil").className = "progress-bar progress-bar-danger";
+  }
+  // another loop
+  if (engine_oil_bar > 100) {
+    engine_oil_bar = 100
+    document.getElementById("engine-oil").style.width = engine_oil_bar + "%";
+  }
+  else {
+    document.getElementById("engine-oil").style.width = engine_oil_bar + "%";
+  }
+
+  // -----------transmission oil bar------------
+  var transmission_oil_bar = ( <%= @truck.total_transmission_distance %>/<%= @maintenance_red.transmission_alert.to_i %> ) * 100
+
+  document.getElementById("transmission-oil").innerHTML = "น้ำมันเกียร์ " + transmission_oil_bar.toFixed(1) + "%" + "  (" + (<%= @truck.total_transmission_distance %>).toLocaleString() + "/" + (<%= @maintenance_red.transmission_alert.to_i %>).toLocaleString() + ")";
+
+  if ( <%= @truck.total_transmission_distance %> < <%= @maintenance_orange.transmission_alert.to_i %> ){
+    document.getElementById("transmission-oil").className = "progress-bar progress-bar-success";
+  }
+  else if (( <%= @truck.total_transmission_distance %> < <%= @maintenance_red.transmission_alert.to_i %> )) {
+    document.getElementById("transmission-oil").className = "progress-bar progress-bar-warning";
+  }
+  else {
+    document.getElementById("transmission-oil").className = "progress-bar progress-bar-danger";
+  }
+  // another loop
+  if (transmission_oil_bar > 100) {
+    transmission_oil_bar = 100
+    document.getElementById("transmission-oil").style.width = transmission_oil_bar + "%";
+  }
+  else {
+    document.getElementById("transmission-oil").style.width = transmission_oil_bar + "%";
+  }
+
+  // -----------gear oil bar------------
+  var gear_oil_bar = ( <%= @truck.total_gear_distance %>/<%= @maintenance_red.gear_alert.to_i %> ) * 100
+
+  document.getElementById("gear-oil").innerHTML = "น้ำมันเฟืองท้าย " + gear_oil_bar.toFixed(1) + "%" + "  (" + (<%= @truck.total_gear_distance %>).toLocaleString() + "/" + (<%= @maintenance_red.gear_alert.to_i %>).toLocaleString() + ")" ;
+
+  if ( <%= @truck.total_gear_distance %> < <%= @maintenance_orange.gear_alert.to_i %> ){
+    document.getElementById("gear-oil").className = "progress-bar progress-bar-success";
+  }
+  else if (( <%= @truck.total_gear_distance %> < <%= @maintenance_red.gear_alert.to_i %> )) {
+    document.getElementById("gear-oil").className = "progress-bar progress-bar-warning";
+  }
+  else {
+    document.getElementById("gear-oil").className = "progress-bar progress-bar-danger";
+  }
+  // another loop
+  if (gear_oil_bar > 100) {
+    gear_oil_bar = 100
+    document.getElementById("gear-oil").style.width = gear_oil_bar + "%";
+  }
+  else {
+    document.getElementById("gear-oil").style.width = gear_oil_bar + "%";
+  }
+
+  // -----------air filter bar------------
+  var air_filter_bar = ( <%= @truck.total_air_distance %>/<%= @maintenance_red.air_alert.to_i %> ) * 100
+
+  document.getElementById("air-filter").innerHTML = "กรอกอากาศ " + air_filter_bar.toFixed(1) + "%" + "  (" + (<%= @truck.total_air_distance %>).toLocaleString() + "/" + (<%= @maintenance_red.air_alert.to_i %>).toLocaleString() + ")";
+
+  if ( <%= @truck.total_air_distance %> < <%= @maintenance_orange.air_alert.to_i %> ){
+    document.getElementById("air-filter").className = "progress-bar progress-bar-success";
+  }
+  else if (( <%= @truck.total_air_distance %> < <%= @maintenance_red.air_alert.to_i %> )) {
+    document.getElementById("air-filter").className = "progress-bar progress-bar-warning";
+  }
+  else {
+    document.getElementById("air-filter").className = "progress-bar progress-bar-danger";
+  }
+  // another loop
+  if (air_filter_bar > 100) {
+    air_filter_bar = 100
+    document.getElementById("air-filter").style.width = air_filter_bar + "%";
+  }
+  else {
+    document.getElementById("air-filter").style.width = air_filter_bar + "%";
+  }
+
+  // -----------water coolant bar------------
+  var water_coolant_bar = ( <%= @truck.total_coolant_distance %>/<%= @maintenance_red.coolant_alert.to_i %> ) * 100
+
+  document.getElementById("water-coolant").innerHTML = "น้ำยาหม้อน้ำ " + water_coolant_bar.toFixed(1) + "%" + "  (" + (<%= @truck.total_coolant_distance %>).toLocaleString() + "/" + (<%= @maintenance_red.coolant_alert.to_i %>).toLocaleString() + ")";
+
+  if ( <%= @truck.total_coolant_distance %> < <%= @maintenance_orange.coolant_alert.to_i %> ){
+    document.getElementById("water-coolant").className = "progress-bar progress-bar-success";
+  }
+  else if (( <%= @truck.total_coolant_distance %> < <%= @maintenance_red.coolant_alert.to_i %> )) {
+    document.getElementById("water-coolant").className = "progress-bar progress-bar-warning";
+  }
+  else {
+    document.getElementById("water-coolant").className = "progress-bar progress-bar-danger";
+  }
+  // another loop
+  if (water_coolant_bar > 100) {
+    water_coolant_bar = 100
+    document.getElementById("water-coolant").style.width = water_coolant_bar + "%";
+  }
+  else {
+    document.getElementById("water-coolant").style.width = water_coolant_bar + "%";
+  }
+
+  // -----------cement blower bar------------
+  var cement_blower_bar = ( <%= @truck.total_blower_distance %>/<%= @maintenance_red.blower_alert.to_i %> ) * 100
+
+  document.getElementById("cement-blower").innerHTML = "น้ำยาปั้มลม " + cement_blower_bar.toFixed(1) + "%" + "  (" + (<%= @truck.total_blower_distance %>).toLocaleString() + "/" + (<%= @maintenance_red.blower_alert.to_i %>).toLocaleString() + ")";
+
+  if ( <%= @truck.total_blower_distance %> < <%= @maintenance_orange.blower_alert.to_i %> ){
+    document.getElementById("cement-blower").className = "progress-bar progress-bar-success";
+  }
+  else if (( <%= @truck.total_blower_distance %> < <%= @maintenance_red.blower_alert.to_i %> )) {
+    document.getElementById("cement-blower").className = "progress-bar progress-bar-warning";
+  }
+  else {
+    document.getElementById("cement-blower").className = "progress-bar progress-bar-danger";
+  }
+  // another loop
+  if (cement_blower_bar > 100) {
+    cement_blower_bar = 100
+    document.getElementById("cement-blower").style.width = cement_blower_bar + "%";
+  }
+  else {
+    document.getElementById("cement-blower").style.width = cement_blower_bar + "%";
+  }
+
 </script>
 
 

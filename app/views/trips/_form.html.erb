@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :trip_date %><br>
-    <%= f.date_select :trip_date %>
+    <%= f.date_select :trip_date , {:use_month_names => ['มกราคา', 'กุมพาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน','ธันวาคม']} %>
   </div>
   <div class="field">
     <%= f.label :driver %><br>
