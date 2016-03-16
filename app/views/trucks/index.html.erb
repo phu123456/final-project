@@ -16,14 +16,14 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <td align="center"></td>
+      <td colspan="2"></th>
       <td align="center">น้ำมันเครื่อง</td>
       <td align="center">น้ำมันเกียร์</td>
       <td align="center">เฟืองท้าย</td>
       <td align="center">กรองอากาศ</td>
       <td align="center">น้ำยาหม้อน้ำ</td>
       <td align="center">น้ำยาปั้มลม</td>
-      <td colspan="3"></th>
+      <td colspan="2"></th>
     </tr>
   </thead>
 
@@ -31,6 +31,7 @@
     <% @trucks.each do |truck| %>
       <tr>
         <td class="table-bordered" align="center"><%= truck.plate %></td>
+        <td class="table-bordered center-text"><%= link_to 'เพิ่มเที่ยว', new_truck_trip_path(truck) %></td>
         <!-- engine-oil -->
         <td align="center"><svg height="23" width="23">
               <circle id="'<%= truck.plate %>'engine" cx="11.5" cy="11.5" r="11.5" fill="" />
@@ -68,7 +69,6 @@
         </td>
 
         <td class="table-bordered center-text"><%= link_to 'ดูข้อมูล', truck %></td>
-        <td class="table-bordered center-text"><%= link_to 'เพิ่มเที่ยว', new_truck_trip_path(truck) %></td>
         <td class="table-bordered center-text"><%= link_to 'ลบ', truck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
         <script>
