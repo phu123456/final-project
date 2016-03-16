@@ -12,8 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+//= require_tree .

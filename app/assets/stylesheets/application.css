@@ -17,3 +17,16 @@
 .center-text{
     text-align: center;
 }
+
+#button-width {
+  width: 150px;
+  margin:auto;
+}
+
+.modal-title {
+    text-align: center;
+}
+
+.jumbotron {
+    background-color:transparent !important;
+}

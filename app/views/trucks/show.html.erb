@@ -1,84 +1,12 @@
-<h3>
-  <center>ทะเบียนรถ: <%= @truck.plate %></center>
-</h3>
 <br>
-<!--
 
-<%= @truck.total_engine_distance %>
-<%= link_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
-<%= @truck.total_transmission_distance %>
-<%= link_to 'น้ำมันเกียร์', truck_reTransmission_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
-<%= @truck.total_gear_distance %>
-<%= link_to 'น้ำมันแฟืองท้าย', truck_reGear_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
-<%= @truck.total_air_distance %>
-<%= link_to 'กรองอากาศ', truck_reAir_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
-<%= @truck.total_coolant_distance %>
-<%= link_to 'น้ำยาหม้อน้ำ', truck_reCoolant_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
-<%= @truck.total_blower_distance %>
-<%= link_to 'น้ำยาปั้มลม', truck_reBlower_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %>
+<div class="panel panel-default">
+   <div style="text-align:center;" class="panel-heading">ทะเบียนรถ: <%= @truck.plate %></div>
+<div class="jumbotron" >
 
-<button style="position:relative;left:1025px;top:90px;" class="button" data-toggle="modal" data-target=".bs-example-modal-sm">รีเซ็ต</button> -->
-
-<!-- Small modal -->
-
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 id="text-center">รีเซ็ตระยะทาง<h4>
-      </div>
-        <table id="text-center" class="table table-bordered">
-          <tr>
-            <td>น้ำมันเครื่อง</td>
-            <td>
-              <script type="text/javascript">
-              function AlertIt() {
-              var answer = confirm ("Please click on OK to continue.")
-              if (answer)
-              window.location="http://www.continue.com";
-              }
-              </script>
-
-              <a href="javascript:AlertIt();">click me</a>
-            </td>
-          </tr>
-
-          <tr>
-            <td>น้ำมันเกียร์</td>
-            <td>2</td>
-          </tr>
-
-          <tr>
-            <td>เฟืองท้าย</td>
-            <td>2</td>
-          </tr>
-
-          <tr>
-            <td>กรองอากาศ</td>
-            <td>2</td>
-          </tr>
-
-        </table>
-    </div>
-  </div>
-</div>
-
-
-
-
-<!--
-<div class="btn-group">
-  <button style="position:relative;left:1010px;top:20.4px;"  class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    &nbsp&nbsp&nbsp&nbsp น้ำมันเครื่อง &nbsp&nbsp&nbsp&nbsp <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    ...
-  </ul>
-</div> -->
 
 <div class="progress">
-  <div id ="engine-oil" class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="100" aria-valuemax="90" style="">
+  <div id ="engine-oil" class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="100" aria-valuemax="100" style="">
   </div>
 </div>
 
@@ -100,6 +28,7 @@
 
 <div class="progress">
   <div id="water-coolant" class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="100" aria-valuemax="90" style="">
+
   </div>
 </div>
 
@@ -108,6 +37,52 @@
   </div>
 </div>
 
+<br><br>
+<!-- Trigger the modal with a button -->
+
+<button id="button-width" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">รีเซ็ต</button>
+
+
+<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">รีเซ็ตระยะทาง <%= @truck.plate %></h4>
+      </div>
+      <table>
+        <tr>
+          <td text-center> <%= link_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %> </td>
+        </tr>
+
+        <tr>
+          <td> <%= link_to 'น้ำมันเกียร์', truck_reTransmission_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %> </td>
+        </tr>
+
+        <tr>
+          <td> <%= link_to 'น้ำมันแฟืองท้าย', truck_reGear_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %> </td>
+        </tr>
+
+        <tr>
+          <td> <%= link_to 'กรองอากาศ', truck_reAir_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %> </td>
+        </tr>
+
+        <tr>
+          <td> <%= link_to 'น้ำยาหม้อน้ำ', truck_reCoolant_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %> </td>
+        </tr>
+
+        <tr>
+          <td> <%= link_to 'น้ำยาปั้มลม', truck_reBlower_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' } %> </td>
+        </tr>
+      </table>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
 
 <br>
 <table id="text-center" class= "table table-striped">
