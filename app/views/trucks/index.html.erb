@@ -1,15 +1,8 @@
-<!-- <%= @maintenance_red.engine_alert%>
-<%= @maintenance_orange.engine_alert.to_i %>
-<%= @maintenance_red.transmission_alert.to_i %>
-<%= @maintenance_orange.transmission_alert.to_i %>
-<%= @maintenance_red.gear_alert.to_i %>
-<%= @maintenance_orange.gear_alert.to_i %>
-<%= @maintenance_red.air_alert.to_i %>
-<%= @maintenance_orange.air_alert.to_i %>
-<%= @maintenance_red.coolant_alert.to_i %>
-<%= @maintenance_orange.coolant_alert.to_i %>
-<%= @maintenance_red.blower_alert.to_i %>
-<%= @maintenance_orange.blower_alert.to_i %> -->
+<div id="box-height" class="row jumbotron col-md-6 col-md-offset-3">
+    <!-- <svg height="23" width="23">
+      <circle cx="11.5" cy="11.5" r="11.5" fill="#00ff00"/>
+    </svg> -->
+</div>
 
 <br>
 <table class="table table-striped">
@@ -32,7 +25,8 @@
         <td class="table-bordered" align="center"><%= truck.plate %></td>
         <td class="table-bordered center-text"><%= link_to 'เพิ่มเที่ยว', new_truck_trip_path(truck) %></td>
         <!-- engine-oil -->
-        <td align="center"><svg height="23" width="23">
+        <td align="center">
+            <svg height="23" width="23">
               <circle id="'<%= truck.plate %>'engine" cx="11.5" cy="11.5" r="11.5" />
             </svg>
         </td>
@@ -68,7 +62,8 @@
         </td>
 
         <td class="table-bordered center-text"><%= link_to 'ดูข้อมูล', truck %></td>
-        <td class="table-bordered center-text"><%= button_to 'ลบ', truck, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-button" %></td>
+        <td class="table-bordered center-text"><%= button_to 'ลบ', truck, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-button", class: "btn btn-danger" %></td>
+
 
         <script>
             //this is for engine oil
@@ -164,6 +159,7 @@
     <% end %>
   </tbody>
 </table>
-
-
-<a href="/trucks/new">เพิ่มรถ</a>
+<br>
+<div class="text-center">
+  <a href="/trucks/new" class="btn btn-info"  style="width:200px">เพิ่มรถ</a>
+</div>

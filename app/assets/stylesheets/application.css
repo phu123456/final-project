@@ -37,8 +37,9 @@
 #delete-button{
   color: white;
   background-color: red;
-  width: 60px;
-  height: 28px;
+  width: 65px;
+  text-align: justify;
+  text-align: center;
   /*add any other properties you want to style*/
 }
 
@@ -48,4 +49,14 @@
 
 .test {
   margin: auto;
+}
+
+#box-height {
+  height: 50px;
+  background-image: url("http://www.siamcitycement.com/images/layout/insee_logo_th.png");
+  background-size: cover;
+}
+
+#indent {
+    text-indent: 240px;
 }

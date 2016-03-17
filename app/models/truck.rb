@@ -11,6 +11,16 @@
 
 class Truck < ActiveRecord::Base
   has_many :trips
+  searchkick
+
+  def self.search(search)
+
+    if search
+      where(['plate LIKE ?', "%#{search}%"])
+    else
+      all
+    end
+  end
 
   def total_engine_distance
     self.trips.where(engine_id: nil).map{|x| x.distance.to_i}.inject(0,:+)

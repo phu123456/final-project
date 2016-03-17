@@ -44,7 +44,7 @@
 
 
 <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" style="width: 33%;">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -52,33 +52,33 @@
       </div>
       <table class="table table-striped">
         <tr>
-          <td> <%= @truck.total_engine_distance %> / <%= @maintenance_red.engine_alert.to_i %> กิโลเมตร </td>
-          <td> <%= button_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_engine_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.engine_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
         </tr>
 
         <tr>
-          <td> <%= @truck.total_transmission_distance %> / <%= @maintenance_red.transmission_alert.to_i %> กิโลเมตร </td>
-          <td> <%= button_to 'น้ำมันเกียร์', truck_reTransmission_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= @truck.total_transmission_distance %> / <%= @maintenance_red.transmission_alert.to_i %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'น้ำมันเกียร์', truck_reTransmission_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
         </tr>
 
         <tr>
-          <td> <%= @truck.total_gear_distance %> / <%= @maintenance_red.gear_alert.to_i %> กิโลเมตร </td>
-          <td> <%= button_to 'น้ำมันแฟืองท้าย', truck_reGear_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= @truck.total_gear_distance %> / <%= @maintenance_red.gear_alert.to_i %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'น้ำมันแฟืองท้าย', truck_reGear_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
         </tr>
 
         <tr>
-          <td> <%= @truck.total_air_distance %> / <%= @maintenance_red.air_alert.to_i %> กิโลเมตร </td>
-          <td> <%= button_to 'กรองอากาศ', truck_reAir_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= @truck.total_air_distance %> / <%= @maintenance_red.air_alert.to_i %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'กรองอากาศ', truck_reAir_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
         </tr>
 
         <tr>
-          <td> <%= @truck.total_coolant_distance %> / <%= @maintenance_red.coolant_alert.to_i %> กิโลเมตร </td>
-          <td> <%= button_to 'น้ำยาหม้อน้ำ', truck_reCoolant_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= @truck.total_coolant_distance %> / <%= @maintenance_red.coolant_alert.to_i %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'น้ำยาหม้อน้ำ', truck_reCoolant_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
         </tr>
 
         <tr>
-          <td> <%= @truck.total_blower_distance %> / <%= @maintenance_red.blower_alert.to_i %> กิโลเมตร </td>
-          <td> <%= button_to 'น้ำยาปั้มลม', truck_reBlower_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= @truck.total_blower_distance %> / <%= @maintenance_red.blower_alert.to_i %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'น้ำยาปั้มลม', truck_reBlower_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
         </tr>
       </table>
       <!-- <div class="modal-footer">

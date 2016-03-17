@@ -47,7 +47,7 @@ class TrucksController < ApplicationController
     @truck = Truck.first
     @maintenance_red = Maintenance.first
     @maintenance_orange = Maintenance.second
-    @trucks = Truck.all
+    @trucks = Truck.search(params[:search])
     @trips = Trip.all
 
   end
