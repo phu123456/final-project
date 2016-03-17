@@ -241,10 +241,17 @@
 
   // -----------cement blower bar------------
   var cement_blower_bar = ( <%= @truck.total_blower_distance %>/<%= @maintenance_red.blower_alert.to_i %> ) * 100
-
+  var count = 0;
   document.getElementById("cement-blower").innerHTML = "น้ำยาปั้มลม " + cement_blower_bar.toFixed(1) + "%" + "  (" + (<%= @truck.total_blower_distance %>).toLocaleString() + "/" + (<%= @maintenance_red.blower_alert.to_i %>).toLocaleString() + " กิโลเมตร" + ")";
 
-  if ( <%= @truck.total_blower_distance %> < <%= @maintenance_orange.blower_alert.to_i %> ){
+  if ('<%= @truck.bulker %>' == 'false') {
+    document.getElementById("cement-blower").className = "progress-bar progress-bar-info";
+    document.getElementById("cement-blower").innerHTML = "คันนี้ไม่มีเครื่องปั้มลม";
+    var count = 1;
+  }
+
+
+  else if ( <%= @truck.total_blower_distance %> < <%= @maintenance_orange.blower_alert.to_i %> ){
     document.getElementById("cement-blower").className = "progress-bar progress-bar-success";
   }
   else if (( <%= @truck.total_blower_distance %> < <%= @maintenance_red.blower_alert.to_i %> )) {
@@ -258,13 +265,11 @@
     cement_blower_bar = 100
     document.getElementById("cement-blower").style.width = cement_blower_bar + "%";
   }
-  else {
+  else if (count == 0) {
     document.getElementById("cement-blower").style.width = cement_blower_bar + "%";
+  }
+  else {
+    document.getElementById("cement-blower").style.width = "100%";
   }
 
 </script>
-
-
-<%= link_to 'create', new_truck_trip_path(@truck) %> |
-<%= link_to 'Edit', edit_truck_path(@truck) %> |
-<%= link_to 'Back', trucks_path %>

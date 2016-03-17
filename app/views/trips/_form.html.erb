@@ -27,17 +27,22 @@
       </div> -->
 
         <div class="col-xs-5">
-            <label>&nbspพนักงานขับรถ</label>
-            <input type="text" name="trip[driver]" class="form-control" id="trip_driver" >
+            <label>พนักงานขับรถ</label>
+            <%= f.text_field :driver, :class => "form-control", :id => "trip_driver" %>
+
             <br>
-            <label>&nbspน้ำหนัก(ตัน)</label>
-            <input type="text" name="trip[weight]" class="form-control" id="trip_weight" >
+            <label>น้ำหนัก(ตัน)</label>
+            <%= f.text_field :weight, :class => "form-control", :id => "trip_weight" %>
+
+
             <br>
-            <label>&nbspชนิดปูน</label>
-            <input type="text" name="trip[cement]" class="form-control" id="trip_cement">
+            <label>ชนิดปูน</label>
+            <%= f.text_field :cement, :class => "form-control", :id => "trip_cement" %>
+
             <br>
-            <label>&nbspน้ำมัน(ลิตร)</label>
-            <input type="text" name="trip[liter]" class="form-control" id="trip_liter" >
+            <label>น้ำมัน(ลิตร)</label>
+            <%= f.text_field :liter, :class => "form-control", :id => "trip_liter" %>
+
         </div>
 
         <div class="col-xs-12">
@@ -50,19 +55,20 @@
             <button type="button" class="calulate-distance">คำนวน</button>
         </div>
 
-        <div class="col-xs-5">
+        <div class="col-xs-4">
             <br>
             <label>ระยะทาง</label>
-            <input id="distance" type="text" class="form-control" name="trip[distance]">
+            <%= f.text_field :distance, :class => "form-control", :id => "distance" %>
+
             <br>
             <label>กิโลเมตร/ลิตร</label>
-            <input type="text" class="form-control" name="trip[average]" id="trip_average">
+            <%= f.text_field :average, :class => "form-control", :id => "trip_average" %>
         </div>
 
         <div class="col-xs-12">
             <br>
-            <label>&nbspสถานที่ส่งของ</label>
-            <input id="input-destination" class="form-control" type="text" name="trip[destination]">
+            <label>สถานที่ส่งของ</label>
+            <%= f.text_field :destination, :class => "form-control", :id => "input-destination" %>
         </div>
 
       </div>
@@ -70,7 +76,7 @@
         <div class= "actions" align="center">
           <a href="/trucks" class="btn btn-danger">ยกเลิก</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button type="submit" name="commit" class="btn btn-success">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbspเพิ่มเที่ยว
+            <span aria-hidden="true"></span>&nbspเพิ่มเที่ยว
           </button>
 
           <% end %>

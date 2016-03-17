@@ -37,7 +37,7 @@
 #delete-button{
   color: white;
   background-color: red;
-  width: 65px;
+  width: 60px;
   text-align: justify;
   text-align: center;
   /*add any other properties you want to style*/
@@ -59,4 +59,8 @@
 
 #indent {
     text-indent: 240px;
+}
+
+#header-top {
+  position: fixed;
 }
