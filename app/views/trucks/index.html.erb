@@ -58,7 +58,7 @@
         </td>
 
         <td class="table-bordered center-text"><%= link_to 'ดูข้อมูล', truck %></td>
-        <td class="table-bordered center-text"><%= button_to 'ลบ', truck, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-button", class: "btn btn-danger" %></td>
+        <td class="table-bordered center-text"><%= button_to 'ลบ' , truck, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-button", class: "btn btn-danger" %> </td>
 
 
         <script>
@@ -135,7 +135,7 @@
 
             //this is for blower
               if (<%= truck.bulker %> == false) {
-                document.getElementById("'<%= truck.plate %>'blower").style.fill = "white";
+                document.getElementById("'<%= truck.plate %>'blower").style.fill = "none";
               }
               else if (<%= truck.total_blower_distance%> > <%= @maintenance_red.blower_alert.to_i %>) {
                 document.getElementById("'<%= truck.plate %>'blower").style.fill = "red";

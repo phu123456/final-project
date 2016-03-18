@@ -40,7 +40,7 @@
 <br><br>
 <!-- Trigger the modal with a button -->
 
-<button id="button-width" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">รีเซ็ต</button>
+<button id="button-width" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp; รีเซ็ต</button>
 
 
 <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -53,7 +53,7 @@
       <table class="table table-striped">
         <tr>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_engine_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.engine_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
-          <td align="center"> <%= button_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td align="center"> <%= button_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button"%> </td>
         </tr>
 
         <tr>

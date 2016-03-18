@@ -5,8 +5,8 @@
     </div>
   <ul class="nav navbar-nav navbar-right">
     <ul class="nav navbar-nav">
-      <li><a href="/trucks"> หน้าแรก <span class="sr-only">(current)</span></a></li>
-      <li><%= link_to 'ตั้งค่า', maintenances_path %></li>
+      <li><a href="/trucks"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;หน้าแรก <span class="sr-only">(current)</span></a></li>
+      <li> <a href="/maintenances"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> ตั้งค่า</a></li>
     </ul>
     <form class="navbar-form navbar-right" role="search">
       <div class="form-group">
@@ -14,7 +14,9 @@
       <form action="/trucks" accept-charset="UTF-8" method="get">
         <input name="utf8" type="hidden" value="✓">
           <input type="text" class="form-control" name="search" id="search-bar" placeholder="ค้นหาทะเบียนรถ...">
-          <input type="submit" name="commit" value="ค้นหา" class="btn btn-default">
+          <button type="submit" name="commit" class="btn btn-default">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
       </form>
     </form>
   </ul>
