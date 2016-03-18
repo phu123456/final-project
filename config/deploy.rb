@@ -1,8 +1,12 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
-
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :application, 'maintenance-truck'
+set :repo_url, 'https://github.com/phu123456/final-project.git'
+set :rvm_ruby_version, '2.1.5@maintenance-truck'
+set :deploy_to, '/home/slurpe3/maintenance-truck'
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :keep_releases, 3
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -35,14 +39,10 @@ set :repo_url, 'git@example.com:me/my_repo.git'
 # set :keep_releases, 5
 
 namespace :deploy do
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+  task :restart do
+  on roles(:app), in: :sequence do
+    execute :touch, release_path.join('tmp/restart.txt')
     end
   end
-
+  after :publishing, :restart
 end
