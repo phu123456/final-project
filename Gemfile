@@ -30,7 +30,9 @@ gem 'autoprefixer-rails'
 gem 'foreman'
 gem 'cancancan', '~> 1.10'
 gem 'capistrano', '~> 3.4.0'
+
 gem 'capistrano-rails'
+
 gem 'capistrano-rvm'
 
 # Use ActiveModel has_secure_password

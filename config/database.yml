@@ -28,4 +28,3 @@ production:
   <<: *default
   host: localhost
   database: truck_production
-    
