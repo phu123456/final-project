@@ -1,6 +1,6 @@
 <br>
 <div class="panel panel-default test" style="width: 75%;">
-  <div align="center" class="panel-heading">ตั้งค่าเตือน</div>
+  <div align="center" class="panel-heading">ค่าเตือน</div>
   <div class="jumbotron">
     <div class="panel-body">
       <div align="center">
@@ -40,7 +40,9 @@
                 <td align="center"><%= number_with_delimiter(maintenance.air_filter.to_i, :delimiter => ',') %></td>
                 <td align="center"><%= number_with_delimiter(maintenance.water_coolant.to_i, :delimiter => ',') %></td>
                 <td align="center"><%= number_with_delimiter(maintenance.cement_blower.to_i, :delimiter => ',') %></td>
-                <td align="center"><%= link_to 'เปลี่ยน', edit_maintenance_path(maintenance) %></td>
+                <% if current_user.role?('admin') %>
+                  <td align="center"><%= link_to 'เปลี่ยน', edit_maintenance_path(maintenance) %></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>

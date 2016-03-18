@@ -4,7 +4,7 @@
    <div style="text-align:center;" class="panel-heading">ทะเบียนรถ: <%= @truck.plate %></div>
 <div style="background-color:transparent !important;" class="jumbotron" >
 
-
+<br>
 <div class="progress">
   <div id ="engine-oil" class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="100" aria-valuemax="100" style="">
   </div>
@@ -37,11 +37,12 @@
   </div>
 </div>
 
-<br><br>
+
 <!-- Trigger the modal with a button -->
-
-<button id="button-width" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp; รีเซ็ต</button>
-
+<% if current_user.role?("admin") %>
+  <br><br>
+  <button id="button-width" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp; รีเซ็ต</button>
+<% end %>
 
 <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm" style="width: 33%;">
@@ -115,7 +116,9 @@
     <td align="center"><%= trip.average %></td>
     <td align="center"><%= trip.cement %></td>
     <td align="center"><%= trip.destination %></td>
-    <td class="table-bordered" align="center"><%= link_to 'แก้ไข', edit_truck_trip_path(@truck, trip) %> </td>
+    <% if current_user.role?("admin") %>
+      <td class="table-bordered" align="center"><%= link_to 'แก้ไข', edit_truck_trip_path(@truck, trip) %> </td>
+    <% end %>
   </tr>
 <% end %>
 </table>

@@ -23,4 +23,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :assign_role
+
+  def role?(role_name)
+    self.role == role_name
+  end
+
+  def assign_role
+    self.role = "user"
+  end
+
 end

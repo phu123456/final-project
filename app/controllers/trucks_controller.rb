@@ -1,5 +1,6 @@
 class TrucksController < ApplicationController
   before_action :set_truck, only: [:show, :edit, :update, :destroy, :reEngine, :reTransmission, :reGear, :reAir, :reCoolant, :reBlower]
+
   def reEngine
     @un_reset_engine_oil_trips = @truck.trips.where(engine_id: nil)
     @engine = Engine.create!()
@@ -49,6 +50,7 @@ class TrucksController < ApplicationController
     @maintenance_orange = Maintenance.second
     @trucks = Truck.search(params[:search])
     @trips = Trip.all
+    authorize! :index, @truck
 
   end
 
