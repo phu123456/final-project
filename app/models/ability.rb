@@ -8,6 +8,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      can :read, [Truck, Trip, Maintenance]
     end
   end
 end
