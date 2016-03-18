@@ -18,9 +18,9 @@
 # Don't use `:all`, it's a meta role.
 
 
-role :app, %w{slurpe3@104.236.63.169:1555}
-role :web, %w{slurpe3@104.236.63.169:1555}
-role :db,  %w{slurpe3@104.236.63.169:1555}
+role :app, %w{slurpe3@104.236.63.169:3029}
+role :web, %w{slurpe3@104.236.63.169:3029}
+role :db,  %w{slurpe3@104.236.63.169:3029}
 
 
 # Configuration
