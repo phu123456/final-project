@@ -8,7 +8,8 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 set :keep_releases, 3
 
-
+set :passenger_restart_with_touch, true
+set :passenger_in_gemfile, true
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
