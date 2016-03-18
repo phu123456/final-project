@@ -1,3 +1,5 @@
+ruby "2.2.1"
+#ruby-gemset=maintenance-truck
 source 'https://rubygems.org'
 
 
@@ -27,6 +29,9 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'foreman'
 gem 'cancancan', '~> 1.10'
+gem 'capistrano', '~> 3.4.0'
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
