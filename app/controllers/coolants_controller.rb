@@ -1,4 +1,5 @@
 class CoolantsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_coolant, only: [:show, :edit, :update, :destroy]
 
   # GET /coolants

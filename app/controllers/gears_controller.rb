@@ -1,4 +1,5 @@
 class GearsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_gear, only: [:show, :edit, :update, :destroy]
 
   # GET /gears
