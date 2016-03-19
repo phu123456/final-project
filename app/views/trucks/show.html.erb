@@ -53,33 +53,35 @@
       </div>
       <table class="table table-striped">
         <tr>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_engine_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.engine_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
-          <td align="center"> <%= button_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button"%> </td>
+          <td id="text-table-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_engine_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.engine_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
+          <td align="center">
+            <%= button_to 'น้ำมันเครื่อง', truck_reEngine_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button", class: "btn btn-success" %>
+          </td>
         </tr>
 
         <tr>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_transmission_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.transmission_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
-          <td align="center"> <%= button_to 'น้ำมันเกียร์', truck_reTransmission_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td id="text-table-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_transmission_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.transmission_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'น้ำมันเกียร์', truck_reTransmission_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button", class: "btn btn-success" %> </td>
         </tr>
 
         <tr>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_gear_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.gear_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
-          <td align="center"> <%= button_to 'น้ำมันแฟืองท้าย', truck_reGear_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td id="text-table-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_gear_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.gear_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'น้ำมันแฟืองท้าย', truck_reGear_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button", class: "btn btn-success" %> </td>
         </tr>
 
         <tr>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_air_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.air_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
-          <td align="center"> <%= button_to 'กรองอากาศ', truck_reAir_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td align="center"> <%= button_to 'กรองอากาศ', truck_reAir_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button", class: "btn btn-success" %> </td>
         </tr>
 
         <tr>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_coolant_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.coolant_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
-          <td align="center"> <%= button_to 'น้ำยาหม้อน้ำ', truck_reCoolant_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td id="text-table-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_coolant_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.coolant_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'น้ำยาหม้อน้ำ', truck_reCoolant_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button", class: "btn btn-success" %> </td>
         </tr>
 
         <tr>
-          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_blower_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.blower_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
-          <td align="center"> <%= button_to 'น้ำยาปั้มลม', truck_reBlower_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button" %> </td>
+          <td id="text-table-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= number_with_delimiter(@truck.total_blower_distance, :delimiter => ',') %> / <%= number_with_delimiter(@maintenance_red.blower_alert.to_i, :delimiter => ',') %> กิโลเมตร </td>
+          <td align="center"> <%= button_to 'น้ำยาปั้มลม', truck_reBlower_path(id: @truck.id), method: :post, data: { confirm: 'Are you sure?' },id: "reset-button", class: "btn btn-success" %> </td>
         </tr>
       </table>
       <!-- <div class="modal-footer">
