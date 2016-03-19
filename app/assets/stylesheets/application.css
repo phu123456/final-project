@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+.circle-center {
+  vertical-align: middle;
+}
 
 .center-text{
     text-align: center;
@@ -95,7 +98,7 @@
 .login-block h1 {
     text-align: center;
     color: #000;
-    font-size: 18px;
+    font-size: 17px;
     text-transform: uppercase;
     margin-top: 0;
     margin-bottom: 20px;
