@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 set :application, 'maintenance-truck'
-set :repo_url, 'https://github.com/phu123456/final-project.git'
-set :rvm_ruby_version, '2.1.5@maintenance-truck'
+set :repo_url, 'git@github.com:phu123456/final-project.git'
+set :rvm_ruby_version, '2.2.1@maintenance-truck'
 set :deploy_to, '/home/slurpe3/maintenance-truck'
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
