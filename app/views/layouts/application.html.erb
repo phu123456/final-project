@@ -21,9 +21,6 @@
     <% if user_signed_in? %>
       <%= render 'layouts/signedheader' %>
         <div class="container">
-          <% flash.each do |name, msg| %>
-        	  <%= content_tag(:div, msg, class: "alert alert-info") %>
-        	<% end %>
         	<%= yield %>
         </div>
     <% else %>
