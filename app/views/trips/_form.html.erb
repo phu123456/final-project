@@ -127,7 +127,6 @@
               var duration = element.duration.text;
               var from = origins[i];
               var to = destinations[j];
-              console.log(distance);
       for (var i = 0; i < distance.length; i++) {
         if (distance[i] == " ") {
           new_distance = distance.substring(0, i)
@@ -142,7 +141,7 @@
 
       average =  (document.getElementById("distance").value) / (document.getElementById("trip_liter").value)
       document.getElementById("trip_average").value = average.toPrecision(3);
-      console.log(destination)
+
 
             }
           }
