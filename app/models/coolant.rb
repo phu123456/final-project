@@ -8,5 +8,5 @@
 #
 
 class Coolant < ActiveRecord::Base
-  belongs_to :trip
+  has_many :trips
 end
