@@ -10,6 +10,7 @@
 #
 
 class Truck < ActiveRecord::Base
+  validates :plate , presence: true, uniqueness: true
   has_many :trips
   searchkick
 
