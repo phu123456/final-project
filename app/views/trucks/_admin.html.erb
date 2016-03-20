@@ -5,10 +5,10 @@
       <td colspan="2"></th>
       <td align="center">น้ำมันเครื่อง</td>
       <td align="center">น้ำมันเกียร์</td>
-      <td align="center">เฟืองท้าย</td>
+      <!-- <td align="center">เฟืองท้าย</td>
       <td align="center">กรองอากาศ</td>
       <td align="center">น้ำยาหม้อน้ำ</td>
-      <td align="center">น้ำยาปั้มลม</td>
+      <td align="center">น้ำยาปั้มลม</td> -->
       <td colspan="2"></th>
     </tr>
   </thead>
@@ -31,29 +31,7 @@
             </svg>
         </td align="center">
 
-        <!-- gear-oil -->
-        <td align="center"><svg height="23" width="23">
-              <circle id="'<%= truck.plate %>'gear" cx="11.5" cy="11.5" r="11.5"/>
-            </svg>
-        </td>
 
-        <!-- air-filter -->
-        <td align="center"><svg height="23" width="23">
-              <circle id="'<%= truck.plate %>'air" cx="11.5" cy="11.5" r="11.5"/>
-            </svg>
-        </td>
-
-        <!-- air-filter -->
-        <td align="center"><svg height="23" width="23">
-              <circle id="'<%= truck.plate %>'coolant" cx="11.5" cy="11.5" r="11.5"/>
-            </svg>
-        </td>
-
-        <!-- air-filter -->
-        <td class="circle-center" align="center"><svg height="23" width="23">
-              <circle class="circle-center"  id="'<%= truck.plate %>'blower" cx="11.5" cy="11.5" r="11.5"/>
-            </svg>
-        </td>
 
         <td id="text-table-center" class="table-bordered center-text"><%= link_to 'ดูข้อมูล', truck %></td>
         <td id="text-table-center" class="table-bordered center-text"><%= button_to 'ลบ' , truck, method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-button", class: "btn btn-danger" %> </td>
