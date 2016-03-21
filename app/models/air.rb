@@ -10,5 +10,4 @@
 
 class Air < ActiveRecord::Base
   has_many :trips
-
 end
