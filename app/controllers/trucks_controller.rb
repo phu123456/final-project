@@ -50,7 +50,7 @@ class TrucksController < ApplicationController
     @maintenance_red = Maintenance.first
     @maintenance_orange = Maintenance.second
     @trucks = Truck.search(params[:search])
-    @trips = Trip.all
+    @trips = Trip
     authorize! :index, @truck
 
   end
@@ -60,7 +60,7 @@ class TrucksController < ApplicationController
   def show
     @maintenance_red = Maintenance.first
     @maintenance_orange = Maintenance.second
-    @trips = Trip.where(truck_id: @truck.id)
+    @trips = Trip.where(truck_id: @truck.id).order(:id)
   end
 
   # GET /trucks/new
