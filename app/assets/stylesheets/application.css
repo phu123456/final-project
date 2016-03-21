@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.hide-display {
+  display: none;
+}
+
 .circle-center {
   vertical-align: middle;
 }
