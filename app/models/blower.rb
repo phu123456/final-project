@@ -8,4 +8,5 @@
 #
 
 class Blower < ActiveRecord::Base
+  has_many :trips
 end

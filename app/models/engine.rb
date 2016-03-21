@@ -9,4 +9,5 @@
 #
 
 class Engine < ActiveRecord::Base
+  has_many :trips
 end

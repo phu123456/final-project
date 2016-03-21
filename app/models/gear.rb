@@ -9,4 +9,5 @@
 #
 
 class Gear < ActiveRecord::Base
+  has_many :trips
 end

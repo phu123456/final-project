@@ -9,4 +9,5 @@
 #
 
 class Transmission < ActiveRecord::Base
+  has_many :trips
 end

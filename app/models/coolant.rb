@@ -8,4 +8,5 @@
 #
 
 class Coolant < ActiveRecord::Base
+  has_many :trips
 end
