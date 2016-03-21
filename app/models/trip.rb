@@ -21,5 +21,6 @@
 #
 
 class Trip < ActiveRecord::Base
+  validates :trip_date, :driver, :weight, :liter, :distance, :average, :cement, :destination, presence: true
   belongs_to :truck
 end
