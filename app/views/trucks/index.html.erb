@@ -1,5 +1,7 @@
+<div class="container"> 
 <% if current_user.role?("admin") %>
   <%= render 'admin' %>
 <% else %>
   <%= render 'user' %>
 <% end %>
+</div>
