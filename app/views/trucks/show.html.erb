@@ -115,7 +115,7 @@
     <td align="center"><%= trip.driver %></td>
     <td align="center"><%= trip.weight %></td>
     <td align="center"><%= trip.liter %></td>
-    <td align="center"><%= trip.distance %></td>
+    <td align="center"><%= trip.distance.to_i %></td>
     <% if trip.trip_type? %>
       <td bgcolor="pink" align="center"><%= trip.average %></td>
     <% else %>
@@ -123,7 +123,7 @@
     <% end %>
     <td align="center"><%= trip.cement %></td>
     <td align="center"><%= trip.destination %></td>
-    <td align="center"><%= trip.allowance%></td>
+    <td align="center"><%= trip.allowance.to_i %></td>
     <% if current_user.role?("admin") %>
       <td class="table-bordered" align="center"><%= link_to 'แก้ไข', edit_truck_trip_path(@truck, trip) %> </td>
     <% end %>
