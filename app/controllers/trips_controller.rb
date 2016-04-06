@@ -5,7 +5,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    # @trips = Trip.all.search(params[:search])
+    @trips = Trip.all
   end
 
   # GET /trips/1
