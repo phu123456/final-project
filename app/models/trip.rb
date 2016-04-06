@@ -5,7 +5,7 @@
 #  id              :integer          not null, primary key
 #  trip_date       :date
 #  driver          :text
-#  weight          :decimal(, )
+#  weight          :text
 #  trip_type       :boolean
 #  liter           :decimal(, )
 #  distance        :decimal(, )
@@ -18,6 +18,10 @@
 #  transmission_id :integer
 #  gear_id         :integer
 #  air_id          :integer
+#  truck_id        :integer
+#  coolant_id      :integer
+#  blower_id       :integer
+#  allowance       :decimal(, )
 #
 
 class Trip < ActiveRecord::Base

@@ -44,6 +44,11 @@
             <%= f.text_field :liter, :class => "form-control", :id => "trip_liter" %>
 
             <br>
+            <span class="glyphicon glyphicon-oil" aria-hidden="true"></span> เบี้ยเลี้ยง
+            <%= f.text_field :allowance, :class => "form-control", :id => "trip_allowance" %>
+
+
+            <br>
             <label>หนักไปหนักกลับ</label>
             &nbsp;<%= f.check_box :trip_type %>
 
@@ -161,7 +166,7 @@
 
   function autocal()
   {
-    
+
     average =  (document.getElementById("distance").value) / (document.getElementById("trip_liter").value)
     document.getElementById("trip_average").value = average.toPrecision(3);
 

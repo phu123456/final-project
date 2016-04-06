@@ -5,7 +5,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all.order(:id)
+    # @trips = Trip.all.search(params[:search])
   end
 
   # GET /trips/1
@@ -71,6 +71,6 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:trip_date, :driver, :weight, :trip_type, :liter, :distance, :average, :cement, :destination)
+      params.require(:trip).permit(:trip_date, :driver, :weight, :trip_type, :liter, :distance, :average, :cement, :destinationm, :allowance)
     end
 end
