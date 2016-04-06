@@ -109,32 +109,46 @@
     </tr>
   </thead>
 
+<script>
+  var total_allowance = 0;
+</script>
+
 <% @trips.each do |trip| %>
   <tr>
-    <td align="center"><%= trip.trip_date %></td>
-    <td align="center"><%= trip.driver %></td>
-    <td align="center"><%= trip.weight %></td>
-    <td align="center"><%= trip.liter %></td>
-    <td align="center"><%= trip.distance.to_i %></td>
+    <td align="center" style="font-size:11px"><%= trip.trip_date %></td>
+    <td align="center" style="font-size:11px"><%= trip.driver %></td>
+    <td align="center" style="font-size:11px"><%= trip.weight %></td>
+    <td align="center" style="font-size:11px"><%= trip.liter %></td>
+    <td align="center" style="font-size:11px"><%= trip.distance.to_i %></td>
     <% if trip.trip_type? %>
       <td bgcolor="pink" align="center"><%= trip.average %></td>
     <% else %>
-      <td align="center"><%= trip.average %></td>
+      <td align="center" style="font-size:11px"><%= trip.average %></td>
     <% end %>
-    <td align="center"><%= trip.cement %></td>
-    <td align="center"><%= trip.destination %></td>
-    <td align="center"><%= trip.allowance.to_i %></td>
+    <td align="center" style="font-size:11px"><%= trip.cement %></td>
+    <td align="center" style="font-size:11px"><%= trip.destination %></td>
+    <td align="center" style="font-size:11px"><%= trip.allowance.to_i %></td>
+
     <% if current_user.role?("admin") %>
       <td class="table-bordered" align="center"><%= link_to 'แก้ไข', edit_truck_trip_path(@truck, trip) %> </td>
     <% end %>
+
+    <script>
+      total_allowance += <%= trip.allowance.to_i %>
+    </script>
+
   </tr>
 <% end %>
+<td colspan="8"></td>
+<td id="total_allowance" align="center"></td>
+<td></td>
 </table>
-
 <br>
 
 </div>
 <script>
+  console.log(total_allowance)
+  document.getElementById("total_allowance").innerHTML = "รวม " + total_allowance.toLocaleString() + " บาท"
   // -----------engine oil bar------------
   var engine_oil_bar = ( <%= @truck.total_engine_distance %>/<%= @maintenance_red.engine_alert.to_i %> ) * 100
 

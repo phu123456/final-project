@@ -47,4 +47,8 @@ class Truck < ActiveRecord::Base
       self.trips.where(blower_id: nil).map{|x| x.distance.to_i}.inject(0,:+)
   end
 
+  def total_allowance
+      self.trips.map{|x| x.allowance.to_i}.inject(0,:+)
+  end
+
 end
