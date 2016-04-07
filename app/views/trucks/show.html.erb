@@ -111,6 +111,12 @@
 
 <script>
   var total_allowance = 0;
+  var total_liter = 0;
+  var total_distance = 0;
+  var one_way = 0;
+  var two_way = 0;
+  var true_count = 0;
+  var false_count = 0;
 </script>
 
 <% @trips.each do |trip| %>
@@ -135,20 +141,47 @@
 
     <script>
       total_allowance += <%= trip.allowance.to_i %>
+      total_liter += <%= trip.liter.to_i %>
+      total_distance += <%= trip.distance.to_i %>
+
+      if (<%= trip.trip_type %> == false) {
+        false_count += 1
+        one_way += <%= trip.average %>
+      }
+      else {
+        true_count += 1
+        two_way += <%= trip.average %>
+      }
+
     </script>
 
   </tr>
 <% end %>
-<td colspan="8"></td>
-<td id="total_allowance" align="center"></td>
-<td></td>
+<td bgcolor="white"></td>
+<td bgcolor="lightgreen" colspan="2" align="center">รวม</td>
+<td bgcolor="lightgreen" id="total_distance" align="center"></td>
+<td bgcolor="lightgreen" id="total_liter" align="center"></td>
+<td bgcolor="lightgreen" id="average_oneway" align="center"></td>
+<td bgcolor="lightgreen" id="average_twoway" align="center"></td>
+<td bgcolor="lightgreen"></td>
+<td bgcolor="lightgreen" id="total_allowance" align="center"></td>
+<td bgcolor="white"></td>
 </table>
 <br>
 
 </div>
+
 <script>
-  console.log(total_allowance)
-  document.getElementById("total_allowance").innerHTML = "รวม " + total_allowance.toLocaleString() + " บาท"
+  document.getElementById("average_oneway").innerHTML = "(" + (one_way / false_count).toFixed(2) + " ขาเดียว"
+  document.getElementById("average_twoway").innerHTML = (two_way / true_count).toFixed(2) + " สองขา" + ")"
+  document.getElementById("total_distance").innerHTML = total_distance.toLocaleString() + " กิโล"
+  document.getElementById("total_liter").innerHTML = total_liter.toLocaleString() + " ลิตร"
+  document.getElementById("total_allowance").innerHTML = total_allowance.toLocaleString() + " บาท"
+
+</script>
+
+<script>
+
   // -----------engine oil bar------------
   var engine_oil_bar = ( <%= @truck.total_engine_distance %>/<%= @maintenance_red.engine_alert.to_i %> ) * 100
 
